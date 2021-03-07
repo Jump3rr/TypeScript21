@@ -3,7 +3,10 @@ class StatsApp {
     data2Input: HTMLInputElement;
     data3Input: HTMLInputElement;
     data4Input: HTMLInputElement;
-
+    numberOfInputs: number;
+    numberOfInputsInput: HTMLInputElement;
+    inputsArray:HTMLInputElement[];
+    inputData: HTMLDivElement;
     sumInput: HTMLInputElement;
     avgInput: HTMLInputElement;
     minInput: HTMLInputElement;
@@ -14,10 +17,32 @@ class StatsApp {
     }
 
     startApp() {
-        this.getInputs();
-        this.watchInputValues();
+        //this.getInputs();
+        //this.watchInputValues();
+        this.getNumberOfInputs();
+    }
+    
+    getNumberOfInputs() {
+        this.numberOfInputsInput = document.querySelector('#numberOfInputs');
+        this.numberOfInputsInput.addEventListener('input', () => this.getNumber());
     }
 
+    getNumber() {
+        this.inputData = document.querySelector('#input-data');
+        this.inputsArray = [];
+        this.inputData.innerHTML = '';
+        this.numberOfInputs = +this.numberOfInputsInput.value;
+        console.log(this.numberOfInputs);
+        this.createInputs(this.numberOfInputs);
+    }
+
+    createInputs(inputsNumber: number) {
+        for(let i = 0; i<inputsNumber; i++) {
+            this.inputsArray[i] = document.createElement('input');
+            this.inputsArray[i].setAttribute('type', 'text');
+            this.inputData.appendChild(this.inputsArray[i]);
+        }
+    }
     getInputs() {
         this.data1Input = document.querySelector('#data1');
         this.data2Input = document.querySelector('#data2');

@@ -3,8 +3,29 @@ var StatsApp = /** @class */ (function () {
         this.startApp();
     }
     StatsApp.prototype.startApp = function () {
-        this.getInputs();
-        this.watchInputValues();
+        //this.getInputs();
+        //this.watchInputValues();
+        this.getNumberOfInputs();
+    };
+    StatsApp.prototype.getNumberOfInputs = function () {
+        var _this = this;
+        this.numberOfInputsInput = document.querySelector('#numberOfInputs');
+        this.numberOfInputsInput.addEventListener('input', function () { return _this.getNumber(); }); //+this.numberOfInputsInput.value;
+    };
+    StatsApp.prototype.getNumber = function () {
+        this.inputData = document.querySelector('#input-data');
+        this.inputsArray = [];
+        this.inputData.innerHTML = '';
+        this.numberOfInputs = +this.numberOfInputsInput.value;
+        console.log(this.numberOfInputs);
+        this.createInputs(this.numberOfInputs);
+    };
+    StatsApp.prototype.createInputs = function (inputsNumber) {
+        for (var i = 0; i < inputsNumber; i++) {
+            this.inputsArray[i] = document.createElement('input');
+            this.inputsArray[i].setAttribute('type', 'text');
+            this.inputData.appendChild(this.inputsArray[i]);
+        }
     };
     StatsApp.prototype.getInputs = function () {
         this.data1Input = document.querySelector('#data1');
