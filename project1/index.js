@@ -73,10 +73,26 @@ var StatsApp = /** @class */ (function () {
         this.showStats(sum, avg, min, max);
     };
     StatsApp.prototype.showStats = function (sum, avg, min, max) {
-        this.sumInput.value = sum.toString();
-        this.avgInput.value = avg.toString();
-        this.minInput.value = min.toString();
-        this.maxInput.value = max.toString();
+        if (isNaN(sum) && isNaN(avg) && isNaN(min) && isNaN(max)) {
+            this.sumInput.classList.add("onLoading");
+            this.avgInput.classList.add("onLoading");
+            this.minInput.classList.add("onLoading");
+            this.maxInput.classList.add("onLoading");
+            this.sumInput.value = "";
+            this.avgInput.value = "";
+            this.minInput.value = "";
+            this.maxInput.value = "";
+        }
+        else {
+            this.sumInput.classList.remove("onLoading");
+            this.avgInput.classList.remove("onLoading");
+            this.minInput.classList.remove("onLoading");
+            this.maxInput.classList.remove("onLoading");
+            this.sumInput.value = sum.toString();
+            this.avgInput.value = avg.toString();
+            this.minInput.value = min.toString();
+            this.maxInput.value = max.toString();
+        }
     };
     return StatsApp;
 }());
