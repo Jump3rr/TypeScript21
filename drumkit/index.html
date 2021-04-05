@@ -5,19 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <audio src="sounds/boom.wav" data-sound="boom" data-key="a"></audio>
-    <audio src="sounds/clap.wav" data-sound="clap" data-key="s"></audio>
-    <audio src="sounds/hihat.wav" data-sound="hihat" data-key="d"></audio>
-    <audio src="sounds/kick.wav" data-sound="kick" data-key="f"></audio>
-    <audio src="sounds/openhat.wav" data-sound="openhat" data-key="g"></audio>
-    <audio src="sounds/ride.wav" data-sound="ride" data-key="h"></audio>
-    <audio src="sounds/snare.wav" data-sound="snare" data-key="j"></audio>
-    <audio src="sounds/tink.wav" data-sound="tink" data-key="k"></audio>
-    <audio src="sounds/tom.wav" data-sound="tom" data-key="l"></audio>
-    <button id="channel1Play">Play Channel 1</button>
-    <script src="index.js"></script>
-    
+<body background="music.jpeg">
+    <div class="sounds">
+        <div class="sound"><h1>A</h1><br>Boom<audio src="sounds/boom.wav" data-sound="boom" data-key="a"></audio></div>
+        <div class="sound"><h1>S</h1><br>Clap<audio src="sounds/clap.wav" data-sound="clap" data-key="s"></audio></div>
+        <div class="sound"><h1>D</h1><br>Hihat<audio src="sounds/hihat.wav" data-sound="hihat" data-key="d"></audio></div>
+        <div class="sound"><h1>F</h1><br>Kick<audio src="sounds/kick.wav" data-sound="kick" data-key="f"></audio></div>
+        <div class="sound"><h1>G</h1><br>Openhat<audio src="sounds/openhat.wav" data-sound="openhat" data-key="g"></audio></div>
+        <div class="sound"><h1>H</h1><br>Ride<audio src="sounds/ride.wav" data-sound="ride" data-key="h"></audio></div>
+        <div class="sound"><h1>J</h1><br>Snare<audio src="sounds/snare.wav" data-sound="snare" data-key="j"></audio></div>
+        <div class="sound"><h1>K</h1><br>Tink<audio src="sounds/tink.wav" data-sound="tink" data-key="k"></audio></div>
+        <div class="sound"><h1>L</h1><br>Tom<audio src="sounds/tom.wav" data-sound="tom" data-key="l"></audio></div>
+    </div>
+    <div class="buttons">
+        <div class="channels">
+            Channel 1:
+            <button id="Record1">Rec</button>
+            <button id="Play1">Play</button>
+        </div>
+        <div class="channels">
+            Channel 2:
+            <button id="Record2">Rec</button>
+            <button id="Play2">Play</button>
+        </div>
+        <div class="channels">
+            Channel 3:
+            <button id="Record3">Rec</button>
+            <button id="Play3">Play</button>
+        </div>
+        <div class="channels">
+            Channel 4:
+            <button id="Record4">Rec</button>
+            <button id="Play4">Play</button>
+        </div>
+
+    </div>
+<script type="module" src="keyboardEvents.js"></script>
+
 </body>
 </html>
