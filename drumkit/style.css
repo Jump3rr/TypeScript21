@@ -1,0 +1,46 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .sounds {
+    display: flex;
+    flex: 1;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sound {
+    border: 5px solid black;
+    border-radius: 50px;
+    margin: 5px;
+    font-size: 15px;
+    padding: 30px;
+    width: 10%;
+    text-align: center;
+    color: white;
+    background: red;
+    filter: brightness(0.7);
+    opacity: 0.7;
+    
+  }
+  .buttons{
+      width: 100%;
+      text-align: center;
+  }
+  .channels{
+        width: 25%;
+        float: left;
+        font-size: 18px;
+        font-weight: 600;
+        color: red;
+        opacity: 0.9;
+        padding-top: 20px;
+        padding-bottom: 20px;
+  }
+  button{
+      color: red;
+      background-color: black;
+  }
