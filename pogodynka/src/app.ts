@@ -12,6 +12,8 @@ export class App {
         const weatherResponse = await fetch(openWeatherUrl);
         const weatherData = await weatherResponse.json();
         console.log(weatherData);
+        const el = document.getElementById('con');
+        el.innerHTML=weatherData.main.temp;
         return weatherData;
     }
     saveData(data: any) {
