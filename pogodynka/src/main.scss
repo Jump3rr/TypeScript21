@@ -1,8 +1,36 @@
 body {
   background: lightblue;
 }
-.con {
-  border: 1px;
-  border-color: black;
-  background: greenyellow;
+#con {
+  border: 1px solid black;
+}
+#searchCity {
+  margin-top: 30px;
+  text-align: center;
+}
+input {
+  background-color: lightblue;
+}
+.oneThree {
+  width: 33%;
+  text-align: center;
+  align-items: center;
+}
+.oneNote {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgreen;
+  height: 250px;
+  width: 250px;
+  text-align: center;
+  display: inline-block;
+}
+section {
+  margin-top: 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns:repeat(auto-fill, 400px);
+  grid-auto-flow: row;
+  grid-gap: 10px;
+  justify-content: center;
 }
