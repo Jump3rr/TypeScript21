@@ -1,8 +1,21 @@
+import {Db} from './db';
+import {Notes} from './notes';
+
 export class App {
-    opwApiKey = '50d53005c0fd5f556bb4ef15224c4209';
+    opwApiKey = 'f5882d2baf0219f483a0ad679b3c47af';
+    db = new Db();
+    notes = new Notes();
 
     constructor() {
         let btn = (<HTMLButtonElement>document.querySelector('#searchCityBtn'));
+        this.db.renderFromLS();
+
+        if(this.db.notesArr.length>0) {
+            this.db.notesArr.map(city => {
+                this.renderWeather(city);
+            })
+        }
+
         btn.addEventListener('click', () => {
             let city = (<HTMLInputElement>document.querySelector('#cityName'));
             if(city) {
@@ -13,26 +26,22 @@ export class App {
 
     async getCityInfo(city: string) {
         const weather = await this.getWeather(city);
-        this.saveData(weather);
     }
     async getWeather(city: string): Promise<any> {
         const openWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${this.opwApiKey}`;
         const weatherResponse = await fetch(openWeatherUrl);
         const weatherData = await weatherResponse.json();
-        console.log(weatherData);
-        const el = document.getElementById('con');
-        el.innerHTML=weatherData.main.temp;
+        this.db.notesArr.push(city);
+        this.db.saveData(this.db.notesArr);
+        this.notes.renderNotes(weatherData);
         return weatherData;
     }
-    saveData(data: any) {
-        localStorage.setItem('weatherData', JSON.stringify(data));
-    }
-    getData() {
-        const data = localStorage.getItem('weatherData');
-        if (data) {
-            return JSON.parse(data);
-        } else {
-            return {};
-        }
+
+    async renderWeather(city: string): Promise<any> {
+        const openWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${this.opwApiKey}`;
+        const weatherResponse = await fetch(openWeatherUrl);
+        const weatherData = await weatherResponse.json();
+        this.notes.renderNotes(weatherData);
+        return weatherData;
     }
 }
