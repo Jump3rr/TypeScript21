@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notepad</title>
+  </head>
+  <body>
+    <main>
+      <div id="addNew">
+        <input type="text" id="noteTitle" placeholder="Title">
+        <textarea id="noteContent" placeholder="Content"></textarea>
+        <select name="colour" id="colourSwitch">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="blue">Blue</option>
+          <option value="orange">Orange</option>
+          <option value="pink">Pink</option>
+      </select>
+      <input type="checkbox" id="notePinned" name="Pin" value="0">Pinned
+        <button type="button" id="searchCityBtn">Add</button>
+      </div>
+      <section id="pinnedNotesArea">
+      </section>
+      <section id="notesArea">
+      </section>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

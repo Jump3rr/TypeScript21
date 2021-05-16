@@ -1,0 +1,64 @@
+body {
+  background: lightblue;
+}
+#addNew {
+  margin-top: 30px;
+  text-align: center;
+}
+#noteTitle {
+  width: 270px;
+  text-align: center;
+}
+
+.oneNote {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: lightgreen;
+  height: 250px;
+  width: 250px;
+  text-align: center;
+  display: inline-block;
+}
+section {
+  margin-top: 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns:repeat(auto-fill, 400px);
+  grid-auto-flow: row;
+  grid-gap: 10px;
+  justify-content: center;
+  
+}
+h2 {
+  width: 100%;
+  height: auto;
+  position: static;
+  padding-bottom: 10px;
+  margin-left: -60px;
+  margin-top: 80px;
+}
+img {
+  margin-top: -40px;
+  margin-left: -75px;
+}
+h4 {
+  margin-top: -80px;
+  margin-right: -80px;
+}
+h5 {
+  margin-left: -150px;
+  margin-top: -110px;
+}
+#noteContent {
+  resize: none;
+ 
+  width: 270px;
+  height:150px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
+  
+}
