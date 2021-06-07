@@ -1,30 +1,35 @@
+import {INotes} from './INotes';
+
 export class Db {
     
-    notesArr: string[];
+    notesArr: INotes[];
 
     constructor() {
         this.notesArr = [];
     }
     saveData(data: any) {
-        localStorage.setItem('weatherData', JSON.stringify(data));
+        localStorage.setItem('notes', JSON.stringify(data));
     }
     getData() {
-        const data = localStorage.getItem('weatherData');   
-        if (data) {
-            this.notesArr.push(data);
-            return JSON.parse(data);
-        } else {
-            return {};
-        }
-    }
-    renderFromLS() {
-        const data = JSON.parse(localStorage.getItem('weatherData'));
+        const notesFromLocalStorage = JSON.parse(localStorage.getItem('notes'));
 
-        if(data) {
-            const abc = data.map( (el: string) => {
-                this.notesArr.push(el);
+        if(notesFromLocalStorage) {
+            const convertedNotes = notesFromLocalStorage.map((notes:INotes) => {
+                notes.createDate = new Date(notes.createDate);
+                return notes;
             })
-                
+            return convertedNotes;
         }
+        else return [];
     }
+    // renderFromLS() {
+    //     const data = JSON.parse(localStorage.getItem('notes'));
+
+    //     if(data) {
+    //         const abc = data.map( (el: string) => {
+    //             this.notesArr.push(el);
+    //         })
+                
+    //     }
+    // }
 }

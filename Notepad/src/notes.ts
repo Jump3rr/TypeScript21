@@ -1,29 +1,47 @@
+import {INotes} from "./INotes";
+
 export class Notes {
-    
-    renderNotes(note: any) {
+
+    addNote(note: INotes) {
         const HTMLNote  = document.createElement('div');
         HTMLNote.className="oneNote";
 
         const HTMLCity = document.createElement('h1');
-        const HTMLWeather = document.createElement('h5');
-        const HTMLContent = document.createElement('h2');
+        const HTMLContent = document.createElement('h5');
         const HTMLDetails = document.createElement('h4');
 
-        HTMLCity.innerHTML = note.name;
-        HTMLContent.innerHTML = Math.round(note.main.temp-273.15) + "℃"; 
-        HTMLWeather.innerHTML = note.weather[0].main;
-        var img = document.createElement("img"); 
-        img.src = `http://openweathermap.org/img/wn/${note.weather[0].icon}@2x.png`;
-        console.log(note);
-        HTMLContent.appendChild(img); 
-        HTMLDetails.innerHTML = "Wilgotność: " + note.main.humidity + "%";
-        HTMLDetails.appendChild(document.createElement("br"));
-        HTMLDetails.innerHTML += "Ciśnienie: " + note.main.pressure + "hPA";
+        HTMLCity.innerHTML = note.title;
+        HTMLContent.innerHTML = note.content;
+        HTMLNote.style.backgroundColor=note.color;
 
         HTMLNote.appendChild(HTMLCity);
         HTMLNote.appendChild(HTMLContent);
         HTMLNote.appendChild(HTMLDetails);
-        HTMLNote.appendChild(HTMLWeather);
+        let cont: HTMLSelectElement;
+        if(note.pinned)
+            cont = document.querySelector('#pinnedNotesArea')
+        else 
+            cont = document.querySelector('#notesArea');
+
+        cont.appendChild(HTMLNote);
+
+    }
+    
+    renderNotes(note: INotes) {
+        const HTMLNote  = document.createElement('div');
+        HTMLNote.className="oneNote";
+
+        const HTMLCity = document.createElement('h1');
+        const HTMLContent = document.createElement('h5');
+        const HTMLDetails = document.createElement('h4');
+
+        HTMLCity.innerHTML = note.title;
+        HTMLContent.innerHTML = note.content;
+        
+
+        HTMLNote.appendChild(HTMLCity);
+        HTMLNote.appendChild(HTMLContent);
+        HTMLNote.appendChild(HTMLDetails);
 
         const cont = document.querySelector('section');
         cont.appendChild(HTMLNote);
