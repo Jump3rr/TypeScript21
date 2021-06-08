@@ -5,7 +5,7 @@ export class Db {
     notesArr: INotes[];
 
     constructor() {
-        this.notesArr = [];
+        this.notesArr = this.getData();
     }
     saveData(data: any) {
         localStorage.setItem('notes', JSON.stringify(data));
@@ -22,14 +22,4 @@ export class Db {
         }
         else return [];
     }
-    // renderFromLS() {
-    //     const data = JSON.parse(localStorage.getItem('notes'));
-
-    //     if(data) {
-    //         const abc = data.map( (el: string) => {
-    //             this.notesArr.push(el);
-    //         })
-                
-    //     }
-    // }
 }

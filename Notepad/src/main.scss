@@ -13,8 +13,8 @@ body {
 .oneNote {
   border: 2px solid black;
   border-radius: 10px;
-  height: 250px;
-  width: 250px;
+  height: 270px;
+  width: 270px;
   text-align: center;
   display: inline-block;
 }
@@ -40,12 +40,26 @@ img {
   margin-top: -40px;
   margin-left: -75px;
 }
+h5 {
+  text-align: right;
+  margin-top: 0;
+}
 h4 {
-  margin-top: -80px;
-  margin-right: -80px;
+  height: 120px;
+  overflow: auto;
+  word-wrap: break-word;
 }
 h1 {
   background-color: white;
+  height: 40px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+#NoteBottom {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex-flow: column;
 }
 
 #noteContent {

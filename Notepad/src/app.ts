@@ -11,6 +11,9 @@ export class App {
     constructor() {
         let btn = (<HTMLButtonElement>document.querySelector('#addNoteBtn'));
         this.db.getData();
+        for(let i=0; i<this.db.notesArr.length; i++) {
+            this.notes.addNote(this.db.notesArr[i]);
+        }
 
         btn.addEventListener('click', () => {
             this.addNote();
@@ -18,6 +21,9 @@ export class App {
     }
     addNote() {
         const note = new Note;
-        this.notes.addNote(note.createNewNote());
+        const newNote = note.createNewNote();
+        this.notes.addNote(newNote);
+        this.db.notesArr.push(newNote);
+        this.db.saveData(this.db.notesArr);
     }
 }
