@@ -90,4 +90,3 @@ it('addNewNote', () => {
     title.innerHTML = 'ABC';
     expect(ret.getElementsByTagName('h1')[0]).not.toStrictEqual(title);
 })})
-
