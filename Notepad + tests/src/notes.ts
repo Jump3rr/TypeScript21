@@ -6,7 +6,7 @@ import { firebaseConfig } from "./config";
 
 export class Notes {
 
-    addNote(note: INotes) {
+    addNote(note: INotes): HTMLElement {
         const HTMLNote  = document.createElement('div');
         HTMLNote.className="oneNote";
 
@@ -15,14 +15,11 @@ export class Notes {
         const HTMLDetails = document.createElement('h5');
         const HTMLDeleteButton = document.createElement('button');
         const HTMLBottom = document.createElement('div');
-        // const HTMLPinnedCheckbox = document.createElement('input');
-        // HTMLPinnedCheckbox.type = "checkbox";
-        // HTMLPinnedCheckbox.id = "notePinned";
 
         HTMLCity.innerHTML = note.title;
         HTMLContent.innerHTML = note.content;
         HTMLNote.style.backgroundColor=note.color;
-        HTMLDetails.innerHTML = note.createDate;//.toLocaleString();
+        HTMLDetails.innerHTML = note.createDate;
         HTMLDeleteButton.id = String(note.id);
         HTMLDeleteButton.innerHTML = "Remove";
         HTMLDeleteButton.onclick = () => this.removeNote(note);
@@ -32,11 +29,13 @@ export class Notes {
 
         HTMLNote.appendChild(HTMLCity);
         HTMLNote.appendChild(HTMLContent);
-        // HTMLNote.appendChild(HTMLDeleteButton);
-        // HTMLNote.appendChild(HTMLDetails);
         HTMLNote.appendChild(HTMLBottom);
-        // HTMLNote.appendChild(HTMLPinnedCheckbox);
+
         HTMLNote.id = String(note.id);
+
+        return HTMLNote;
+    }
+    addToArea(HTMLNote: HTMLElement, note: INotes) {
         let cont: HTMLSelectElement;
         if(note.pinned)
             cont = document.querySelector('#pinnedNotesArea')
@@ -44,7 +43,6 @@ export class Notes {
             cont = document.querySelector('#notesArea');
 
         cont.appendChild(HTMLNote);
-
     }
 
     removeNote(note: INotes) {

@@ -1,5 +1,5 @@
 import {Db} from './db';
-import {FirebaseDb} from './firebaseDb';
+//import {FirebaseDb} from './firebaseDb';
 import {Notes} from './notes';
 import {Note} from './note';
 import { INotes } from './INotes';
@@ -15,7 +15,8 @@ export class App {
         
         setTimeout(() => {
         for(let i=0; i<database.notesArr.length; i++) {
-            this.notes.addNote(database.notesArr[i]);
+            let addedNote = this.notes.addNote(database.notesArr[i]);
+            this.notes.addToArea(addedNote, database.notesArr[i]);
         }
 
         btn.addEventListener('click', () => {
@@ -26,7 +27,8 @@ export class App {
     addNote() {
         const note = new Note;
         const newNote = note.createNewNote();
-        this.notes.addNote(newNote);
+        let addedNote = this.notes.addNote(newNote);
+        this.notes.addToArea(addedNote, newNote);
         database.notesArr.push(newNote);
         database.saveData(database.notesArr);
     }
